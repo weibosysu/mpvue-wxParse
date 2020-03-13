@@ -35,6 +35,7 @@ function strNumDiscode(str) {
   str = str.replace(/&supe;/g, '⊇');
   str = str.replace(/&oplus;/g, '⊕');
   str = str.replace(/&otimes;/g, '⊗');
+  str = str.replace(/&times;/g, '×');
   str = str.replace(/&perp;/g, '⊥');
   str = str.replace(/&sdot;/g, '⋅');
   str = str.replace(/&plusmn;/g, "±");
@@ -103,11 +104,11 @@ function strGreeceDiscode(str) {
 
 function strcharacterDiscode(str) {
   // 加入常用解析
-  str = str.replace(/&nbsp;/g, ' ');
+  str = str.replace(/&amp;/g, '&');
+  str = str.replace(/&nbsp;/g, '\xa0');
   str = str.replace(/&ensp;/g, ' ');
   str = str.replace(/&emsp;/g, '　');
   str = str.replace(/&quot;/g, "'");
-  str = str.replace(/&amp;/g, '&');
   str = str.replace(/&lt;/g, '<');
   str = str.replace(/&gt;/g, '>');
   str = str.replace(/&#8226;/g, '•');
@@ -175,9 +176,9 @@ function strOtherDiscode(str) {
 }
 
 function strDiscode(str) {
+  str = strcharacterDiscode(str);
   str = strNumDiscode(str);
   str = strGreeceDiscode(str);
-  str = strcharacterDiscode(str);
   str = strOtherDiscode(str);
   return str;
 }
